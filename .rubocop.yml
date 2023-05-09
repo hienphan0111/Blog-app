@@ -7,6 +7,10 @@ AllCops:
     - 'node_modules/**/*'
     - 'spec/**/*'
     - 'db/**/*'
+    - 'Gemfile'
+    - 'config/**/*'
+    - 'test/**/*'
+    - 'bin/**/*'
 
   DisplayCopNames: true
   Metrics/MethodLength:
