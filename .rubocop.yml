@@ -6,6 +6,7 @@ AllCops:
     - 'Rakefile'
     - 'node_modules/**/*'
     - 'spec/**/*'
+    - 'db/**/*'
 
   DisplayCopNames: true
   Metrics/MethodLength:
