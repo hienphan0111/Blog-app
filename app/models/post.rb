@@ -1,4 +1,9 @@
 class Post < ApplicationRecord
-  belongs_to :user, class_name: 'User', foreign_key: 'author_id', counter_cache: :posts_counter
-  has_many :comments, :likes
+  belongs_to :author, class_name: 'User', counter_cache: :posts_counter
+  has_many :comments
+  has_many :likes
+
+  def five_recent_comments
+    comments.last(5)
+  end
 end
