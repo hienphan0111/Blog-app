@@ -8,5 +8,4 @@ class UsersController < ApplicationController
     # @user = User.find(params[:id])
     render 'users/profile'
   end
-
 end
