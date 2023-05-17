@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Slab:wght@400;500&display=swap');
+
+.user-container {
+  display: flex;
+  font-family: 'Roboto Slab', serif;
+  align-self: start;
+  margin: 1em;
+}
+
+.user-box {
+  width: 100%;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #000;
+  padding: 1em;
+  margin-left: 20px;
+}
+
+.sub-info {
+  align-self: right;
+  position: relative;
+  top: 20%;
+  right: 10px;
+}
+
+.name {
+  align-items: center;
+  text-decoration: none;
+}
+
+.link {
+  text-decoration: none;
+  color: #000;
+  transition-duration: 0.5s;
+}
+
+.link:hover {
+  color: #dbde0e;
+}
+
+/* Style of user's profile */
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2em;
+}
+
+.bio {
+  border: 1px solid #000;
+  margin: 1em 0;
+  padding: 5px;
+  width: 100%;
+}
+
+.post-content {
+  margin: 10px 0;
+  padding-top: 5px;
+}
+
+.post-count {
+  text-align: right;
+}
+
+button {
+  text-align: center;
+  justify-self: center;
+}

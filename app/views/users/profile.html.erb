@@ -1,1 +1,19 @@
-<h2>Profile page</h2>
+<div class="profile">
+  <section class="user-box">
+    <%= render partial: "user", locals: { user: @user} %>
+  </section>
+  <section class="bio">
+    <h4> Bio </h4>
+    <%= @user.bio %>
+  </section>
+  <section>
+    <% if @posts.nil? %>
+      <p>No posts found</p>
+    <% elsif @posts.empty? %>
+      <p>There are no posts</p>
+    <% else %>
+      <%= render @posts %>
+    <% end %>
+  </section>
+  <button>See all posts</button>
+</div>

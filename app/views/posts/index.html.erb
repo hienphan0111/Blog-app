@@ -1,1 +1,16 @@
-<h2>Posts page show all posts of given user</h2>
+<div class="posts">
+  <section class="user-box">
+    <%= render partial: "users/user", locals: { user: @user } %>
+  </section>
+  <section>
+    <% @posts.each do |post| %>
+      <div>
+        <%= render partial: "post", locals: { post: post } %>
+      </div>
+      <div>
+        <%= post.comments.empty? ? "There are no comments in this post" : post.comments.each { |comment| "#{comment.user.name} : #{comment.text}" } %>
+      </div>
+    <% end %>
+  </section>
+  <button>Pagination</button>
+</div>

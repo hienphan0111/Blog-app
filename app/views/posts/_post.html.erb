@@ -1,0 +1,10 @@
+<div class="post-container">
+  <h3><%= link_to post.title, "#{post.author.id}/posts/#{post.id}", class: "link" %></h3>
+  <p class="post-content">
+    <% subtext = post.text[0..200] %>
+    <%= subtext %>...
+  </p>
+  <p class="post-count">
+    Comment: <%= post.comments_counter %>, Likes: <%= post.likes_counter %>
+  </p>
+</div>
