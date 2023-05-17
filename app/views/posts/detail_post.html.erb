@@ -1,1 +1,18 @@
-<p>Show specific post's detail</p> 
+<div class="post-detail">
+  <section class="post-ct">
+    <div class="post-header">
+      <h4>
+        <%= "#{@post.title} by #{@post.author.name}" %>
+      </h4>
+      <span>
+        Comments: <%= @post.comments_counter %>, Likes: <%=  @post.likes_counter %>
+      </span>
+    </div>
+    <%= @post.text %>
+  </section>
+  <section class="comments">
+    <div>
+      <%= @post.comments.empty? ? "There are no comments in this post" : @post.comments.each { |comment| "#{comment.user.name} : #{comment.text}" } %>
+    </div>
+  </section>
+</div>

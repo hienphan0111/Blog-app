@@ -4,8 +4,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = 'name'
-    # @user = User.find(params[:id])
+    @user = User.find(params[:id])
+    @posts = @user.posts
     render 'users/profile'
   end
 end

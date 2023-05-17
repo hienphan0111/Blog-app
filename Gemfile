@@ -81,3 +81,5 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers', '~> 4.0'
 end
+
+gem "cssbundling-rails", "~> 1.1"

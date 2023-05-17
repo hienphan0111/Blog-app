@@ -1,0 +1,13 @@
+<div class="user-container">
+  <span class="photo">
+    <%= image_tag(user.photo == 'http' ? 'https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png' : user.photo, :width => 100, :height => 100, :crop => :fill) %>
+  </span>
+  <div class="info">
+    <h2 class="name">
+      <%= link_to user.name, user_path(user), class: "link" %>
+    </h2>
+    <p class="sub-info">
+      Number of posts: <%= user.posts_counter %>
+    </p>
+  </div>
+</div>
