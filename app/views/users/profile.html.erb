@@ -6,6 +6,9 @@
     <h4> Bio </h4>
     <%= @user.bio %>
   </section>
+  <button type="button" class="btn btn-primary" >
+    <%= link_to "Create new post", new_user_post_path(@user.id), class: "btn btn-primary" %>
+  </button>
   <section>
     <% if @posts.nil? %>
       <p>No posts found</p>

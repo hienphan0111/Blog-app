@@ -1,5 +1,5 @@
 <div class="post-container">
-  <h3><%= link_to post.title, "#{post.author.id}/posts/#{post.id}", class: "link" %></h3>
+  <h3><%= link_to post.title, user_post_path(@user, post), class: "link" %></h3>
   <p class="post-content">
     <% subtext = post.text[0..200] %>
     <%= subtext %>...
