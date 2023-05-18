@@ -1,0 +1,7 @@
+<section>
+    <h4>Leave comment</h4>
+    <%= form_for([user, post, comment]) do |f| %>
+      <%= f.text_area :text, row: 20, class: "form-control mb-1" %>
+      <%= f.submit "Submit", class: "btn btn-outline-primary" %>
+    <% end %>
+  </section>
