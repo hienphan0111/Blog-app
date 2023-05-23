@@ -3,12 +3,19 @@
     <%= render partial: "users/user", locals: { user: @user } %>
   </section>
   <section>
-    <% @posts.each do |post| %>
+    <% @user.posts.each do |post| %>
       <div>
         <%= render partial: "post", locals: { post: post } %>
       </div>
       <div>
-        <%= post.comments.empty? ? "There are no comments in this post" : post.comments.each { |comment| "#{comment.user.name} : #{comment.text}" } %>
+        <% if post.comments.empty? %>
+          <p>"There are no comments in this post"</p>
+        <% else %>
+          <% post.comments.each  do |comment| %>
+            <%= comment.user.name %> : 
+            <%= comment.text %>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
   </section>
