@@ -4,8 +4,6 @@ FactoryBot.define do
     name { "John Doe" }
     bio { "john@example.com" }
     photo { "http" }
-    after(:create) do |user|
-      create_list(:post, 0, user: user)
-    end
+    posts_counter { 0 }
   end
 end

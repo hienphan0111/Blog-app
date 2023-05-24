@@ -7,6 +7,7 @@ require_relative '../config/environment'
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require 'factory_bot_rails'
+require 'shoulda/matchers'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -83,6 +84,18 @@ RSpec.configure do |config|
   # config.after(:each) do
   #   DatabaseCleaner.clean
   # end
+  config.expect_with :rspec do |expectations|
+    expectations.include_chain_clauses_in_custom_matcher_descriptions = true
+  end
+
+  config.mock_with :rspec do |mocks|
+    mocks.verify_partial_doubles = true
+  end
+
+  config.include FactoryBot::Syntax::Methods
+
+  # Add this line to enable shoulda-matchers
+  config.include Shoulda::Matchers::ActiveRecord, type: :model
 end
 
 class ActionDispatch::IntegrationTest
@@ -94,3 +107,10 @@ Capybara.register_driver :selenium_chrome do |app|
 end
 
 Capybara.default_driver = :selenium_chrome
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
