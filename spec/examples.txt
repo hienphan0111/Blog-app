@@ -1,3 +1,31 @@
-example_id                     | status | run_time     |
------------------------------- | ------ | ------------ |
-./spec/views/user_spec.rb[1:1] | passed | 5.76 seconds |
+example_id                        | status | run_time        |
+--------------------------------- | ------ | --------------- |
+./spec/views/post_spec.rb[1:1:1]  | passed | 2.77 seconds    |
+./spec/views/post_spec.rb[1:1:2]  | passed | 2.83 seconds    |
+./spec/views/post_spec.rb[1:1:3]  | passed | 2.86 seconds    |
+./spec/views/post_spec.rb[1:1:4]  | passed | 2.86 seconds    |
+./spec/views/post_spec.rb[1:1:5]  | passed | 2.87 seconds    |
+./spec/views/post_spec.rb[1:1:6]  | passed | 2.96 seconds    |
+./spec/views/post_spec.rb[1:1:7]  | passed | 2.87 seconds    |
+./spec/views/post_spec.rb[1:1:8]  | passed | 2.83 seconds    |
+./spec/views/post_spec.rb[1:1:9]  | passed | 2.84 seconds    |
+./spec/views/post_spec.rb[1:1:10] | passed | 4.31 seconds    |
+./spec/views/post_spec.rb[1:2:1]  | passed | 0.54657 seconds |
+./spec/views/post_spec.rb[1:2:2]  | passed | 0.54338 seconds |
+./spec/views/post_spec.rb[1:2:3]  | passed | 0.528 seconds   |
+./spec/views/post_spec.rb[1:2:4]  | passed | 0.53958 seconds |
+./spec/views/post_spec.rb[1:2:5]  | passed | 5.91 seconds    |
+./spec/views/post_spec.rb[1:2:6]  | passed | 0.70841 seconds |
+./spec/views/post_spec.rb[1:2:7]  | passed | 0.76689 seconds |
+./spec/views/user_spec.rb[1:1:1]  | passed | 0.68036 seconds |
+./spec/views/user_spec.rb[1:1:2]  | passed | 2.14 seconds    |
+./spec/views/user_spec.rb[1:1:3]  | passed | 2.16 seconds    |
+./spec/views/user_spec.rb[1:1:4]  | passed | 8.05 seconds    |
+./spec/views/user_spec.rb[1:2:1]  | passed | 0.57199 seconds |
+./spec/views/user_spec.rb[1:2:2]  | passed | 0.64195 seconds |
+./spec/views/user_spec.rb[1:2:3]  | passed | 2.82 seconds    |
+./spec/views/user_spec.rb[1:2:4]  | passed | 2.87 seconds    |
+./spec/views/user_spec.rb[1:2:5]  | passed | 2.34 seconds    |
+./spec/views/user_spec.rb[1:2:6]  | passed | 2.24 seconds    |
+./spec/views/user_spec.rb[1:2:7]  | passed | 3 seconds       |
+./spec/views/user_spec.rb[1:2:8]  | passed | 6.57 seconds    |

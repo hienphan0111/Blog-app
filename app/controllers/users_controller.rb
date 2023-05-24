@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.first
+    @user = User.find(params[:id])
     @posts = @user.posts
     render 'users/profile'
   end

@@ -1,6 +1,8 @@
 <div class="user-container">
   <span class="photo">
-    <%= image_tag(user.photo == 'http' ? 'https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png' : user.photo, :width => 100, :height => 100, :crop => :fill) %>
+    <% if user.photo != nil %>
+      <%= image_tag(user.photo, size: '100') %>
+    <% end %>
   </span>
   <div class="info">
     <h2 class="name">

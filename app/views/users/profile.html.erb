@@ -18,5 +18,7 @@
       <%= render @posts %>
     <% end %>
   </section>
-  <button>See all posts</button>
+  <button>
+    <%= link_to "See all posts", user_posts_path(@user.id) %>
+  </button>
 </div>
