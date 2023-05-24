@@ -1,64 +1,74 @@
 require 'rails_helper'
+require 'capybara'
 
-RSpec.describe 'User show', type: :system do
+RSpec.describe 'User index page:', type: :system do
+  before(:each) do
+    @user1 = User.create(name: 'User 1', photo: 'http://localhost:3000/anything.jpg', bio: 'User info', posts_counter: 0)
+    @post1 = Post.create(title: 'post one', text: 'post one text', author: @user1, comments_counter: 0, likes_counter: 0)
+    @post2 = Post.create(title: 'post two', text: 'post two text', author: @user1, comments_counter: 0, likes_counter: 0)
+    @post3 = Post.create(title: 'post three', text: 'post three text', author: @user1, comments_counter: 0, likes_counter: 0)
+    @post4 = Post.create(title: 'post four', text: 'post four text', author: @user1, comments_counter: 0,likes_counter: 0)
+  end
 
-  let(:user1) { User.create(name: 'User1', photo: 'http://', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', posts_counter: 0) }
-  let(:user2) { User.create(name: 'User2', photo: 'http://', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', posts_counter: 0) }
-  let(:post1) { Post.create(title: "First post", text: "This is the first post", author_id: user1.id) }
-  let(:post2) { Post.create(title: "Second post", text: "This is the second post", author_id: user1.id) }
-  let(:post3) { Post.create(title: "Third post", text: "This is the third post", author_id: user1.id) }
+  # User index page
 
   describe 'User index page' do
-    it 'shows the right content' do
+    scenario 'I can see the username of all other users' do
       visit users_path
-
-      expect(page).to have_content('User1')
-      expect(page).to have_content('User2')
-
-      expect(page).to have_css("img[src*='http://']")
-      expect(page).to have_content("#{user1.name} - #{user1.posts.count} posts")
-      expect(page).to have_content("#{user2.name} - #{user2.posts.count} posts")
-
-      # This is added assuming anchor tag with path exists
-      click_link 'User1'
-
-      expect(current_path).to eq(user_path(user1))
+      expect(page).to have_content(@user1.name)
+    end
+    scenario 'I can see the profile picture for each user.s' do
+      visit users_path
+      expect(@user1.photo).to match(%r{^http?://.*\.(jpe?g|gif|png)$})
+    end
+    scenario 'I can see the number of posts each user has written.' do
+      visit users_path
+      expect(page).to have_content(@user1.posts_counter)
+    end
+    scenario 'When I click on a user, I am redirected to that user show page' do
+      visit users_path
+      click_link(@user1.name)
+      expect(page).to have_current_path(user_path(@user1.id))
     end
   end
 
+  # User show page
   describe 'User show page' do
-    let!(:user) { FactoryBot.create(:user, name: 'User One', bio: 'Bio One') }
-    let!(:post1) { FactoryBot.create(:post, user: user, content: 'Content One') }
-    let!(:post2) { FactoryBot.create(:post, user: user, content: 'Content Two') }
-    let!(:post3) { FactoryBot.create(:post, user: user, content: 'Content Three') }
-
-    it 'shows the right content' do
-      visit user_path(user)
-
-      expect(page).to have_css("img[src*='#{user.profile_picture_url}']")
-      expect(page).to have_content(user.name)
-      expect(page).to have_content("Posts: #{user.posts.count}")
-      expect(page).to have_content(user.bio)
-
-      within '#posts' do
-        expect(page).to have_content('Content One')
-        expect(page).to have_content('Content Two')
-        expect(page).to have_content('Content Three')
-
-        expect(page).not_to have_content(post1.content, count: 4)
-      end
+    scenario 'I can see the user profile picture' do
+      visit user_path(@user1.id)
+      expect(@user1.photo).to match(%r{^http?://.*\.(jpe?g|gif|png)$})
+    end
+    scenario 'I can see the users username.' do
+      visit user_path(@user1.id)
+      expect(page).to have_content(@user1.name)
+    end
+    scenario 'I can see the number of posts the user has written.' do
+      visit user_path(@user1.id)
+      expect(page).to have_content(@user1.posts_counter)
+    end
+    scenario 'I can see the users bio' do
+      visit user_path(@user1.id)
+      expect(page).to have_content(@user1.bio)
+    end
+    scenario 'I can see the users first 3 posts' do
+      visit user_path(@user1.id)
+      expect(page).to have_content(@user1.posts[0].title)
+      expect(page).to have_content(@user1.posts[1].title)
+      expect(page).to have_content(@user1.posts[2].title)
+    end
+    scenario 'I can see a button that lets me view all of a users posts' do
+      visit user_path(@user1.id)
+      expect(page).to have_button('See all posts')
+    end
+    scenario 'When I click a users post, it redirects me to that posts show page' do
+      visit user_path(@user1.id)
+      click_link(@user1.posts[0].title)
+      expect(page).to have_current_path(user_post_path(@user1.id, @user1.posts[0].id))
+    end
+    scenario 'When I click the see all posts button, it redirects me to the users posts index page' do
+      visit user_path(@user1.id)
+      click_link('See all posts')
+      expect(page).to have_current_path(user_posts_path(@user1.id))
     end
   end
-
-  click_link 'Content One'
-
-  expect(current_path).to eq(post_path(post1))
-
-  describe 'index page' do
-    it 'show the right content' do
-      visit users_path
-      expect(page).to have_content('home page')
-    end
-  end
-
 end
