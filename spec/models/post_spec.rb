@@ -31,6 +31,7 @@ RSpec.describe Post, type: :model do
     it { should validate_numericality_of(:comments_counter).only_integer.is_greater_than_or_equal_to(0) }
     it { should validate_numericality_of(:likes_counter).only_integer.is_greater_than_or_equal_to(0) }
   end
+  
 
   describe '#five_recent_comments' do
     it 'returns the five most recent comments, ordered by created_at' do

@@ -34,7 +34,7 @@ RSpec.describe PostsController, type: :request do
 
     it "returns a response body includes correct placeholder text" do
       get "/users/#{user.id}/posts/#{post.id}"
-      expect(response.body).to include("Show specific post's detail")
+      expect(response.body).to include(post.text)
     end
   end
 
