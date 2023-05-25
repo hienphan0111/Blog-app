@@ -1,1 +1,11 @@
-<%= render @users %>
+<div class="container text-center m-t10">
+  <h1 class="mt-10">Blog app</h1>
+
+  <% if user_signed_in? %>
+    <div>Welcomeback <%= current_user.name %> </div>
+    <%= button_to "Sigin out", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= button_to "Sign in", new_user_session_path %>
+  <% end %>
+
+</div>
