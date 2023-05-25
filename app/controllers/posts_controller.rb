@@ -39,4 +39,11 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :text)
   end
+
+  def destroy
+    @post.destroy
+
+    redirect_to posts_path
+  end
+
 end
