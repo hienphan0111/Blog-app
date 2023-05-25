@@ -83,7 +83,6 @@ The Blog app will allow users create, show the post as well as the reader can in
 - Add authorization rules
 - Add API endpoints
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
@@ -163,6 +162,11 @@ rspec spec rspec
 - Twitter: [hienphan0111](https://twitter.com/hienphan0111)
 - LinkedIn: [mr-hienphan](https://www.linkedin.com/in/hien-phan-61097b256/)
 
+👤 **Stanley Kibor**
+
+- GitHub: [@chepkok3](https://github.com/chepkok3)
+- Twitter: [@chepkok3](https://twitter.com/home)
+- LinkedIn: [@chepkok3](https://www.linkedin.com/in/kibor-stanley-350b8a123/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
