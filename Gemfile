@@ -87,3 +87,5 @@ gem "cssbundling-rails", "~> 1.1"
 gem 'factory_bot_rails'
 
 gem 'devise'
+
+gem 'cancancan'

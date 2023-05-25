@@ -1,7 +1,14 @@
 class PostsController < ApplicationController
+  before_action :find_post, only: [:destroy]
+
+  def find_post
+    @post = Post.find(params[:id])
+  end
+
   def index
     @user = User.includes(:posts).find(params[:user_id])
     @posts = @user.posts.includes(:comments)
+    authorize! :read, Post
   end
 
   def show
@@ -32,6 +39,12 @@ class PostsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @post.destroy
+
+    redirect_to user_posts_path
   end
 
   private

@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :author, class_name: 'User', counter_cache: :posts_counter
-  has_many :comments, class_name: 'Comment'
+  has_many :comments, class_name: 'Comment', dependent: :destroy
   has_many :likes, class_name: 'Like'
 
   validates :title, presence: true, length: { maximum: 250 }
@@ -9,5 +9,13 @@ class Post < ApplicationRecord
 
   def five_recent_comments
     comments.last(5)
+  end
+
+  before_destroy :delete_comments
+
+  private
+
+  def delete_comments
+    comments.delete_all
   end
 end

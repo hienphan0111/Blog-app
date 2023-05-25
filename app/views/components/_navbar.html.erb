@@ -10,13 +10,13 @@
           <%= link_to 'Home', '/', class: "nav-link active" %>
         </li>
         <li class="nav-item">
-          <%= link_to 'All posts', '/', class: "nav-link active" %>
+          <%= link_to 'All posts', user_posts_path(current_user), class: "nav-link active" %>
         </li>
       </ul>
       <span class="d-grid gap-2 d-md-flex justify-content-md-end">
         <% if user_signed_in? %>
           <%= current_user.name %> /
-          <% button_to "Sign out", destroy_user_session_path, class: "btn btn-secondary" %>
+          <%= button_to "Sign out", destroy_user_session_path, class: "btn btn-secondary" %>
         <% else %>
           <%= button_to "Sign in", new_user_session_path, class: "btn btn-primary me-md-1" %>
           <%= link_to "Sign up", new_user_registration_path, class: "btn bg-success text-white" %>

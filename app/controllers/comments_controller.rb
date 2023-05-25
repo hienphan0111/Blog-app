@@ -1,4 +1,10 @@
 class CommentsController < ApplicationController
+  before_action :find_comment, only: [:destroy]
+
+  def find_comment
+    @comment = Comment.find(params[:id])
+  end
+
   def new
     @user = current_user
     @post = Post.find(params[:id])
@@ -16,6 +22,12 @@ class CommentsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @comment.destroy
+
+    redirect_to user_post_path
   end
 
   private
