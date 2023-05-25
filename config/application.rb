@@ -18,12 +18,18 @@ module BlogApp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.before_configuration do
+      env_file = File.join(Rails.root, 'config', 'development.yml')
+      
+      if File.exist?(env_file)
+        env_vars = File.read(env_file).split
+        env_hash = Hash[env_vars.map { |var| var.split('=') }]
+        env_hash.each do |key, value|
+          ENV[key] = value
+        end
+      end
+    end
+
   end
 end
 
-config.before_configuration do
-  env_file = File.join(Rails.root, 'config', 'development.yml')
-  YAML.load(File.open(env_file)).each do |key, value|
-    ENV[key.to_s] = value
-  end if File.exists?(env_file)
-end
