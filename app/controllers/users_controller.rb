@@ -6,4 +6,9 @@ class UsersController < ApplicationController
     @posts = @user.posts
     render 'users/profile'
   end
+
+  def posts
+    user = User.find(params[:user_id])
+    render json: user.posts
+  end
 end

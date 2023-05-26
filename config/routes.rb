@@ -18,4 +18,12 @@ Rails.application.routes.draw do
       resources :likes, only: [:new, :create]
     end
   end
+
+  resources :users do
+    get 'all-posts', to: 'users#posts'
+    resources :posts do
+      get 'all-comments', to: 'posts#all_comments'
+      post 'create-comments', to: 'comments#api_create'
+    end
+  end
 end

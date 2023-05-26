@@ -5,6 +5,11 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
+  def index
+    post = Post.find(params[:post_id])
+    render json: post.comments
+  end
+
   def new
     @user = current_user
     @post = Post.find(params[:id])
@@ -24,6 +29,16 @@ class CommentsController < ApplicationController
     end
   end
 
+  def api_create
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.create(api_comment_params.merge(user: current_user))
+    render json: @comment
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: 'Post not found' }, status: :not_found
+  rescue ActiveRecord::RecordInvalid => e
+    render json: { error: e.message }, status: :unprocessable_entity
+  end
+
   def destroy
     @comment.destroy
 
@@ -33,6 +48,10 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
+    params.require(:comment).permit(:text)
+  end
+
+  def api_comment_params
     params.require(:comment).permit(:text)
   end
 end
