@@ -19,7 +19,7 @@ module BlogApp
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.before_configuration do
-      env_file = File.join(Rails.root, 'config', 'development.yml')
+      env_file = File.join(Rails.root, 'config', 'local_env.yml')
       
       if File.exist?(env_file)
         env_vars = File.read(env_file).split
