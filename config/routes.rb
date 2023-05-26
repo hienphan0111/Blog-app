@@ -19,9 +19,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :user do
-    get 'posts', to: 'users#posts'
-    resources :post do
-      get 'comments', to: 'comments#index'
+  resources :users do
+    get 'all-posts', to: 'users#posts'
+    resources :posts do
+      get 'all-comments', to: 'posts#all_comments'
+      post 'create-comments', to: 'comments#api_create'
+    end
   end
 end

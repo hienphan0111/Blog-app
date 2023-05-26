@@ -19,6 +19,13 @@ class PostsController < ApplicationController
     render 'posts/detail_post'
   end
 
+  def all_comments
+    @post = Post.find(params[:post_id])
+    render json: @post.comments
+  rescue
+    render json: { error: 'Post not found' }
+  end
+
   def new
     @user = current_user
     @post = @user.posts.build
@@ -43,7 +50,6 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-
     redirect_to user_posts_path
   end
 

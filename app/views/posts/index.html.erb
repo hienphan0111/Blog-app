@@ -28,5 +28,10 @@
       </section>
     <% end %>
   </section>
-  <button>Pagination</button>
+  <div class="d-flex mt-4 gap-2">
+    <button type="button" class="mr-2 btn btn-primary" >
+      <%= link_to "Create new post", new_user_post_path(@user.id), class: "btn btn-primary" %>
+    </button>
+    <button type="button" class="btn btn-outline-primary ml-4">Pagination</button>
+  </div>
 </div>
