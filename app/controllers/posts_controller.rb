@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   def all_comments
     @post = Post.find(params[:post_id])
     render json: @post.comments
-  rescue
+  rescue ActiveRecord::RecordNotFound
     render json: { error: 'Post not found' }
   end
 
