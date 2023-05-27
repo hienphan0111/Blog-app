@@ -89,3 +89,5 @@ gem 'factory_bot_rails'
 gem 'devise'
 
 gem 'cancancan'
+
+gem 'rswag'

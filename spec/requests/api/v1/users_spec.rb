@@ -1,8 +1,6 @@
 require 'swagger_helper'
-require 'rails_helper'
 
-RSpec.describe 'users', type: :request do
-
+RSpec.describe 'api/v1/users', type: :request do
   path '/' do
 
     get('list users') do
@@ -116,18 +114,18 @@ RSpec.describe 'users', type: :request do
     end
   end
 
-  path '/users/{id}/all-posts' do
+  path '/users/{user_id}/all-posts' do
     # You'll want to customize the parameter types...
-    parameter name: 'id', in: :path, type: :string, description: 'id'
+    parameter name: 'user_id', in: :path, type: :string, description: 'user_id'
 
     get('posts user') do
       response(200, 'successful') do
-        let(:id) { '123' }
+        let(:user_id) { '123' }
 
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
-              example: JSON.parse(response.present?.body, symbolize_names: true)
+              example: JSON.parse(response.body, symbolize_names: true)
             }
           }
         end
